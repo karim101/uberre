@@ -9,7 +9,7 @@
                                 <h2 class="common_h2">My Projects</h2>
 								<?php 
 								if(!empty($properties_details)){ 
-								foreach($properties_details as $details) {?>
+								foreach($properties_details as $details) { ?>
                                 <div class="filesRow">
                                     <div class="col-relative">
                                         <div class="col left">
@@ -23,10 +23,10 @@
                                       <p class="fileAddress"><?php echo $details['street_address']; ?> <?php echo $details['pin']; ?></p>
                                       <p class="fileDate"><?php  echo date("jS F, Y", strtotime($details['created'])); ?></p>
 									  <?php $property=array();   ?>
-									  <?php foreach($details['property_service'] as $service_dtls) { 									  
+									  <?php foreach($details['property_service'] as $service_dtls) {								  
 									  $property[$service_dtls['category']['cat_name']][$service_dtls['service_cost']['type']]['id']=$service_dtls['service_cost']['type'];
-									  $property[$service_dtls['category']['cat_name']][$service_dtls['service_cost']['type']]['ubookr_service_id']=$service_dtls['service_cost']['ubookr_service_id'];
-									  $property[$service_dtls['category']['cat_name']][$service_dtls['service_cost']['type']]['supplierId']=$service_dtls['service_cost']['supplierId'];
+									  $property[$service_dtls['category']['cat_name']][$service_dtls['service_cost']['type']]['ubookr_service_id']=$service_dtls['ubookrServiceId']; /** from API **/
+									  $property[$service_dtls['category']['cat_name']][$service_dtls['service_cost']['type']]['supplierId']=$service_dtls['supplierId'];  /** from API **/
 									  $property[$service_dtls['category']['cat_name']][$service_dtls['service_cost']['type']]['id']=$service_dtls['id'];
 									  $property[$service_dtls['category']['cat_name']][$service_dtls['service_cost']['type']]['drop_date']=$service_dtls['drop_date'];
 									  $property[$service_dtls['category']['cat_name']][$service_dtls['service_cost']['type']]['drop_link']=$service_dtls['drop_link'];
@@ -50,7 +50,7 @@
                                    </div>
                                     </div>    
                                     <div class="list_product">
-										<?php  foreach($property as $key => $pro_val){ ?>
+										<?php  foreach($property as $key => $pro_val){   ?>
 											<ul>
 											<?php foreach($pro_val as $key1 =>$val){  ?>
                                                 <div class="list_product-relative-wrap">
@@ -156,8 +156,7 @@
                             <input class="btnBlue" value="Submit" type="submit">
                         </div>
                      <?php echo $this->Form->end(); ?>
-                </div>   
-                
+                </div>  
         </div>
     </div>
 </div>
